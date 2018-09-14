@@ -80,6 +80,11 @@ class ImageProcessor(object):
         self.depthVal = None
         self.hueVal = None
         self.BBGUI = BBGUI()
+        self.cog = None
+
+        self.focal = 1062.3
+        self.imgW = 640
+        self.imgH = 480
 
         self.initDepth = None
         self.initW = None
@@ -134,16 +139,16 @@ class ImageProcessor(object):
         # Find largest contour in final mask
         finalMask, moments = getLargestMask(finalMask, getMoments=True)
 
-        # If the moments were not found, return
+        # If the moments were not found, return images
         if moments is None:
-            return
+            return image, depth
 
         # Compute new center of mass (DON'T FORGET TO COMPENSATE FOR THE ROI!!!)
-        cog = (int(moments['m10']/moments['m00']) + self.BB[2],int(moments['m01']/moments['m00']) + self.BB[0])
+        self.cog = (int(moments['m10']/moments['m00']) + self.BB[2],int(moments['m01']/moments['m00']) + self.BB[0])
 
-        # Dwar the center of mass and bounding box on the image
-        cv2.circle(image,cog,10,(0,0,255),2)
-        cv2.circle(depth,cog,10,(65535),2)
+        # Draw the center of mass and bounding box on the image
+        cv2.circle(image,self.cog,10,(0,0,255),2)
+        cv2.circle(depth,self.cog,10,(65535),2)
         cv2.rectangle(image,(self.BB[2],self.BB[0]),(self.BB[3],self.BB[1]),(0,0,255),1)
         cv2.rectangle(depth,(self.BB[2],self.BB[0]),(self.BB[3],self.BB[1]),(65535),1)
 
@@ -153,10 +158,16 @@ class ImageProcessor(object):
         BBSize = (round(self.initW*factor),round(self.initH*factor))
 
         # Compute new bounding box
-        self.BB = updateBB(cog,BBSize,image.shape)
+        self.BB = updateBB(self.cog,BBSize,image.shape)
 
-        # Display images
-        cv2.imshow("mask", finalMask)
-        cv2.imshow("depth", depth*4)
-        cv2.imshow("image", image)
+        # Return images
+        return image, depth
+
+    def compute3D(self):
+        # Compute 3D coordinates
+        # HELP: u = f/z*x; v = f/z*y
+        z = self.depthVal / 10
+        x = (self.cog[0] - self.imgW/2)*z/self.focal
+        y = (self.cog[1] - self.imgH/2)*z/self.focal
+        return x,y,z
 
