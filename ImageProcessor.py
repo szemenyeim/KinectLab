@@ -3,9 +3,6 @@ import numpy as np
 from BBGUI import BBGUI
 import matplotlib.pyplot as plt
 
-def getRoi(array, ROI):
-    return array[ROI[0]:ROI[1],ROI[2]:ROI[3]]
-
 def updateBB(cog, BBSize, imSize):
 
     # Half width and half heigth
@@ -24,6 +21,9 @@ def updateBB(cog, BBSize, imSize):
         hHeigth = imSize[0] - cog[1]
 
     return (cog[1] - hHeigth, cog[1] + hHeigth, cog[0] - hWidth, cog[0] + hWidth)
+
+def getRoi(array, ROI):
+    return array[ROI[0]:ROI[1],ROI[2]:ROI[3]]
 
 def getLargestMask(binary,getMoments=False):
 
