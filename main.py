@@ -1,5 +1,5 @@
 import cv2
-from Camera import FolderCam #,Camera
+from Camera import FolderCam ,Camera
 from ImageProcessor import ImageProcessor
 import time
 

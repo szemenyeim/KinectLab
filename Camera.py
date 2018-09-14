@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
-#from primesense import openni2
-#from primesense import _openni2 as c_api
+from primesense import openni2
+from primesense import _openni2 as c_api
 import os.path as osp
 from glob import glob1
 import re
@@ -18,7 +18,7 @@ def alphanum_key(s):
     """
     return [ tryint(c) for c in re.split('([0-9]+)', s) ]
 
-'''class Camera(object):
+class Camera(object):
     def __init__(self):
         openni2.initialize("C:/Program Files/OpenNI2/Redist")
         self.dev = openni2.Device.open_any()
@@ -46,7 +46,7 @@ def alphanum_key(s):
         img = np.frombuffer(cframe_data, dtype=np.uint8)
         img.shape = (480, 640, 3)
 
-        return img, depth'''
+        return img, depth
 
 class FolderCam(object):
     def __init__(self, path):
