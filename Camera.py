@@ -23,17 +23,17 @@ class Camera(object):
         openni2.initialize("C:/Program Files/OpenNI2/Redist")
         self.dev = openni2.Device.open_any()
         self.depth_stream = self.dev.create_depth_stream()
+        self.color_stream = self.dev.create_color_stream()
+        self.dev.set_depth_color_sync_enabled( True )
         self.depth_stream.start()
         self.depth_stream.set_video_mode(
             c_api.OniVideoMode(pixelFormat=c_api.OniPixelFormat.ONI_PIXEL_FORMAT_DEPTH_1_MM, resolutionX=640,
                                resolutionY=480, fps=30))
-        self.color_stream = self.dev.create_color_stream()
         self.color_stream.set_video_mode(
             c_api.OniVideoMode(pixelFormat=c_api.OniPixelFormat.ONI_PIXEL_FORMAT_RGB888, resolutionX=640,
                                resolutionY=480, fps=30))
         self.color_stream.start()
         self.dev.set_image_registration_mode(openni2.IMAGE_REGISTRATION_DEPTH_TO_COLOR)
-        self.dev.set_depth_color_sync_enabled( True )
 
     def getImages(self):
         dframe = self.depth_stream.read_frame()
