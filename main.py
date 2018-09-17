@@ -6,8 +6,8 @@ import time
 
 if __name__ == '__main__':
 
-    #cam = Camera()
-    cam = FolderCam("./vid")
+    cam = Camera()
+    #cam = FolderCam("./vid")
 
     imageProcessor = ImageProcessor()
 
