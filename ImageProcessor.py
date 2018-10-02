@@ -55,6 +55,8 @@ class ImageProcessor(object):
 
 
         # If there is nothing in the initDepth variable, fill it with the current depthVal
+        if self.initDepth is None:
+            self.initDepth = self.depthVal
 
 
         # Mask the depth image using the current depthVal
@@ -108,7 +110,11 @@ class ImageProcessor(object):
         # self.BB has [y1,y2,x1,x2]
 
         # Set width and height (including initial)
-
+        self.width = self.BB[3] - self.BB[2]
+        self.height = self.BB[1] - self.BB[0]
+        if self.initH is None:
+            self.initH = self.height
+            self.initW = self.width
 
         # get ROIs
 
@@ -129,9 +135,7 @@ class ImageProcessor(object):
 
 
         # Compute new center of mass (DON'T FORGET TO COMPENSATE FOR THE ROI!!!)
-
-
-        # Draw the center of mass and bounding box on the image
+        # cog has (x,y) coordinates
 
 
         # Compute ratio between the original and current depths
@@ -141,6 +145,13 @@ class ImageProcessor(object):
 
 
         # Compute new bounding box
+
+
+        # Draw the center of mass and bounding box on the image
+        cv2.circle(image, self.cog, 10, (0, 0, 255), 2)
+        cv2.circle(depth, self.cog, 10, (65535), 2)
+        cv2.rectangle(image, (self.BB[2], self.BB[0]), (self.BB[3], self.BB[1]), (0, 0, 255), 1)
+        cv2.rectangle(depth, (self.BB[2], self.BB[0]), (self.BB[3], self.BB[1]), (65535), 1)
 
         # Return images
         return image, depth
