@@ -16,13 +16,14 @@ class ImageProcessor(object):
         self.initW = None
         self.initH = None
 
+        self.hueVal = None
+
         self.BB = None
         self.cog = None
 
         self.depthVal = None
         self.width = None
         self.height = None
-        self.hueVal = None
 
     def updateBB(self,cog, BBSize, imSize):
 
@@ -61,7 +62,7 @@ class ImageProcessor(object):
 
         # Mask the depth image using the current depthVal
 
-        return np.ones(depthRoi.shape, 'uin8')
+        return np.ones(depthRoi.shape, 'uint8')
 
     def getLargestMask(self, binary):
 
@@ -102,7 +103,7 @@ class ImageProcessor(object):
 
         # Mask the hsv image using the hueVal. Also use saturation and value
 
-        return np.ones(imgRoi.shape, 'uin8')
+        return np.ones(depthMask.shape, 'uint8')
 
     def processImage(self, image, depth):
         if self.BB is None:
@@ -158,7 +159,7 @@ class ImageProcessor(object):
 
     def compute3D(self):
         # Compute 3D coordinates
-        # HELP: u = f/z*x; v = f/z*y
+        # HELP: u = f/z*x + px; v = f/z*y + py
         z = -1
         x = -1
         y = -1
