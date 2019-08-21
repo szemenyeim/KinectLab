@@ -53,7 +53,7 @@ class ImageProcessor(object):
         moments = None
 
         # Find contours
-        _, contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        contours,_ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
         # get largest contour
         maxSize = -1
