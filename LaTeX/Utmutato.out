@@ -1,0 +1,10 @@
+\BOOKMARK [0][-]{chapter.1}{Objektumfelismerés}{}% 1
+\BOOKMARK [1][-]{section.1.1}{RGB-D kamerák}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Szín alapú detektálás}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Bináris képek feldolgozása}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{A mérés környezete}{}% 5
+\BOOKMARK [1][-]{section.2.1}{A\040Python\040nyelv}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{OpenCV}{chapter.2}% 7
+\BOOKMARK [0][-]{chapter.3}{Mérési feladatok}{}% 8
+\BOOKMARK [0][-]{chapter.4}{Hasznos kódrészletek}{}% 9
+\BOOKMARK [0][-]{chapter.5}{Ellenőrző kérdések}{}% 10
