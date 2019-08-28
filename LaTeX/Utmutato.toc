@@ -14,8 +14,14 @@
 \defcounter {refsection}{0}\relax 
 \select@language {magyar} \contentsline {section}{\numberline {2.2}OpenCV}{9}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\select@language {magyar} \contentsline {chapter}{\numberline {3}Mérési feladatok}{10}{chapter.3}
+\select@language {magyar} \contentsline {subsection}{\numberline {2.2.1}Adattípusok}{9}{subsection.2.2.1}
 \defcounter {refsection}{0}\relax 
-\select@language {magyar} \contentsline {chapter}{\numberline {4}Hasznos kódrészletek}{11}{chapter.4}
+\select@language {magyar} \contentsline {subsection}{\numberline {2.2.2}Numpy tömbök manipulációja}{10}{subsection.2.2.2}
 \defcounter {refsection}{0}\relax 
-\select@language {magyar} \contentsline {chapter}{\numberline {5}Ellenőrző kérdések}{13}{chapter.5}
+\select@language {magyar} \contentsline {subsection}{\numberline {2.2.3}Képek olvasása és megjelenítése}{10}{subsection.2.2.3}
+\defcounter {refsection}{0}\relax 
+\select@language {magyar} \contentsline {chapter}{\numberline {3}Mérési feladatok}{12}{chapter.3}
+\defcounter {refsection}{0}\relax 
+\select@language {magyar} \contentsline {chapter}{\numberline {4}Hasznos kódrészletek}{13}{chapter.4}
+\defcounter {refsection}{0}\relax 
+\select@language {magyar} \contentsline {chapter}{\numberline {5}Ellenőrző kérdések}{15}{chapter.5}

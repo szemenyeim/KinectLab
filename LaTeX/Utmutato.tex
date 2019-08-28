@@ -349,6 +349,101 @@ A Python egyik legfontosabb függvénykönyvtára a Numpy, amely tömbök kezel�
 
 Az OpenCV~\cite{opencv} egy nyílt forráskódú számítógépes látás algoritmusokat tartalmazó függvénykönyvtár. Az OpenCV elsődleges nyelve a C++, azonban elérhetőek hozzá hivatalos wrapperek többek között Java és Python nyelven. Az OpenCV rengeteg hivatalosan támogatott algoritmust tartalmaz, melyen felül a külön letölthető Contrib modulban harmadik felek által kifejlesztett további funkciók is elérhetők.
 
+\subsection{Adattípusok}
+
+Az OpenCV könyvtár a Python verzióban a Numpy könyvtár által definiált n dimenziós számtömböket (ndarray) használja a képek tárolására. Ezek a tömbök különböző adattípusokat tartalmazhatnak, méretük minden kép esetén $c\times H\times W$, ahol $c$ a csatornák, $H$ a képsorok, $W$ pedig az oszlopok száma. Az egyszerűbb képi adattípusok egy azonosítóval is definiálhatóak az alábbi formában:
+
+\begin{center} 
+	CV\_<bitmélység>{U|S|F}C<csatornák száma>
+\end{center} 
+
+Bár tömbök segítségével közvetlenül is tárolhatnánk többdimenziós adatokat, a csatornák számának közvetlen megadása kényelmesebbé és szemléletesebbé teszi az adattárolást és programozást. Például színes képek esetén három csatornára van szükségünk, esetleg négyre, ha az időt is tárolni akarjuk.
+Példák:
+\begin{itemize}
+	\item CV\_32F: 32 bites lebegőpontos szám
+	\item CV\_8UC3: 8 bites 3 csatornás szám/kép
+\end{itemize}
+
+\subsection{Numpy tömbök manipulációja}
+
+Üres $3\times 4$ tömb létrehozása:
+
+\begin{lstlisting}[language=Python]
+arr = np.ndarray((3,4))
+\end{lstlisting}
+
+Nullákkal/egyesekkel feltöltött $3\times 4$ tömb létrehozása:
+
+\begin{lstlisting}[language=Python]
+arr = np.zeros((3,4))
+arr = np.ones((3,4))
+\end{lstlisting}
+
+Nullákkal/egyesekkel feltöltött, egy másik tömbbel megegyező méretű és típusú tömb létrehozása:
+
+\begin{lstlisting}[language=Python]
+arr1 = np.zeros_like(arr)
+arr1 = np.ones_like(arr)
+\end{lstlisting}
+
+Lista-tömb konverzió:
+
+\begin{lstlisting}[language=Python]
+arr = np.array([[1,2,3],[4,5,6]])
+\end{lstlisting}
+
+Típuskonverzió:
+
+\begin{lstlisting}[language=Python]
+arr1 = arr.astype('float32')
+arr1 = arr.astype('float64')
+arr1 = arr.astype('uint8')
+arr1 = arr.astype('int16')
+\end{lstlisting}
+
+Tömb mérete és adattípusa:
+
+\begin{lstlisting}[language=Python]
+arr.shape
+arr.dtype
+\end{lstlisting}
+
+Tömb eleméhez történő hozzáférés:
+
+\begin{lstlisting}[language=Python]
+arr[2,2] # egy elem
+arr[-1,-1] # utolsó sor utolsó eleme
+arr[1:4,2:5] # részmátrix kiemelése (FONTOS: A felsö limit nem inkluzív, vagyis az [1-4) sor és a [2-5) oszlop vannak benne)
+arr[1:3,:] # [1-3) sorok összes eleme 
+
+rowInd = [1,3,5,11]
+arr[rowInd] # Az 1,3,5 éa 11 sorok összes eleme
+
+colBin = [True,True,False,True,False,False]
+arr[:,colBin] # az összes sor 0,1 és 3 oszlopai
+\end{lstlisting}
+
+\subsection{Képek olvasása és megjelenítése}
+
+Az első programunk egy keretprogram, melyet a mérés során folyamatosan módosítunk, bővítünk. A program rendkívül egyszerű, az OpenCV imread(), namedWindow() és imshow() függvényei megjelenítik egy ablakban a képet, majd az „ESC” gomb hatására program visszatér az operációs rendszerhez.
+
+\begin{lstlisting}[language=Python]
+import cv2
+import numpy as np
+
+img = cv2.imread("image.jpg",cv2.IMREAD_COLOR)
+cv2.imshow("Image",img)
+cv2.waitKey(0) # Waits for keyboard press - necessary after imshow
+\end{lstlisting}
+
+A cv2.IMREAD\_COLOR egy logikai változó (ún. flag), mely megmondja az imread függvénynek, hogy a képet színesként, három csatornán töltse be.  Alternatívaként, a cv2.IMREAD\_GRAYSCALE flag használatával lehetőség van a képet szürkeárnyalatosként, egyetlen csatornán betölteni. Fontos opció továbbá a cv2.IMREAD\_UNCHANGED melyet gyakran használunk RGB-D kamerák esetén a mélység kép betöltésére, mivel ezek általában egy csatornás, 16 bites képek, így a többi flag esetén elvégzett 8 bites konverzió adatvesztéshez vezetne.
+
+A mérés során az eredmények mentéséhez és a mérési jegyzőkönyvhöz szükségünk lesz a képek kiírására, amihez az alábbi utasítás használható:
+
+\begin{lstlisting}[language=Python]
+cv2.imwrite("img_out.jpg",img)
+\end{lstlisting}
+
 \chapter{Mérési feladatok}
 
 A mérés során a feladat egy a mérésvezető által meghatározott objektum térbeli követése lesz egy RGB-D szenzor segítségével. A mérés folyamán az alábbi feladatokat kell elvégezni:
@@ -357,7 +452,7 @@ A mérés során a feladat egy a mérésvezető által meghatározott objektum t
 \item Készítsen eljárást egy adott objektum 2D-ben történő követésére egy RGB-D kamera mélységképe alapján!
 \item Készítsen eljárást egy adott objektum szín alapú követésére a HSV színtérben!
 \item Határozza meg az adott objektum koordinátáit a 3D térben!
-\item Ellenőrizze az algoritmus helyes működését előre felvett videófelvételek, valamint élő videó segítségével!
+\item Ellenőrizze az algoritmus helyes működését előre felvett videofelvételek, valamint élő videó segítségével!
 \end{enumerate}
 
 \chapter{Hasznos kódrészletek}
@@ -473,7 +568,7 @@ np.argmax(h) 
 \item Hogyan lehet egy bináris képen az objektumok kontúrjait meghatározni? Mire használhatók ezek fel?
 \item Hogyan lehet egy bináris objektum tömegközéppontját meghatározni?
 \item Milyen programozási nyelvet használunk a mérés során? Miért előnyös ez a nyelv multi-platform fejlesztés esetén?
-\item Hogyan lehet osztályt és függvényt definiálni Python nyelven? (pszeudó kód elég)
+\item Hogyan lehet osztályt és függvényt definiálni Python nyelven? (pszeudokód elég)
 \end{enumerate}
 
 \printbibliography
