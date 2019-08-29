@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2018.11.20)  28 AUG 2019 20:16
+This is XeTeX, Version 3.14159265-2.6-0.99998 (MiKTeX 2.9.6500 64-bit) (preloaded format=xelatex 2018.11.20)  29 AUG 2019 14:40
 entering extended mode
 **./Utmutato.tex
 (Utmutato.tex
@@ -1838,36 +1838,32 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 ]
 1. fejezet.
-File: images/Kinect.png Graphic file (type bmp)
-<images/Kinect.png>
 [2
 
-] [3]
-File: images/YCBCR.png Graphic file (type bmp)
-<images/YCBCR.png>
-File: images/HSV.png Graphic file (type bmp)
-<images/HSV.png>
- [4] [5]
+]
+File: images/Kinect.png Graphic file (type bmp)
+<images/Kinect.png>
+ [3] [4]
 2. fejezet.
-[6
+[5
 
 ]
-Overfull \hbox (3.94069pt too wide) in paragraph at lines 287--288
+Overfull \hbox (3.94069pt too wide) in paragraph at lines 259--260
 \TU/lmr/m/n/12 hogy Pythonban alapvetően a hozzárendelés (assignment) igazából 
 C++-szemszögből
  []
 
-[7] ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+[6] ("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
 File: lstlang1.sty 2015/06/04 1.6 listings language file
 )
-LaTeX Font Info:    Try loading font information for TU+pcr on input line 297.
-LaTeX Font Info:    No file TUpcr.fd. on input line 297.
+LaTeX Font Info:    Try loading font information for TU+pcr on input line 269.
+LaTeX Font Info:    No file TUpcr.fd. on input line 269.
 
 
 LaTeX Font Warning: Font shape `TU/pcr/m/n' undefined
-(Font)              using `TU/lmr/m/n' instead on input line 297.
+(Font)              using `TU/lmr/m/n' instead on input line 269.
 
-[8] [9] [10] [11]
+[7] [8] [9] [10] [11]
 3. fejezet.
 [12
 
@@ -1894,11 +1890,11 @@ AED: lastpage setting LastPage
 Package caption Warning: Unused \captionsetup[sub] on input line 33.
 See the caption package documentation for explanation.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 576.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 576.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 548.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 548.
 (Utmutato.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 576.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 576.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 548.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 548.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1906,15 +1902,15 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Package logreq Info: Writing requests to 'Utmutato.run.xml'.
 \openout1 = `Utmutato.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 576.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 548.
  ) 
 Here is how much of TeX's memory you used:
- 41360 strings out of 427835
- 778696 string characters out of 3152453
- 1309635 words of memory out of 3000000
- 44836 multiletter control sequences out of 15000+200000
+ 41350 strings out of 427835
+ 778547 string characters out of 3152453
+ 1304641 words of memory out of 3000000
+ 44828 multiletter control sequences out of 15000+200000
  538206 words of font info for 70 fonts, out of 3000000 for 9000
  1328 hyphenation exceptions out of 8191
- 62i,12n,77p,10414b,5047s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 62i,12n,77p,10414b,5272s stack positions out of 5000i,500n,10000p,200000b,50000s
 
 Output written on Utmutato.pdf (17 pages).
