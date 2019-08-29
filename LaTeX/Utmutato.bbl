@@ -60,8 +60,8 @@
       \endverb
     \endentry
     \entry{pycharm}{misc}{}
-      \field{sortinit}{2}
-      \field{sortinithash}{cbff857e587bcb4635511624d773949e}
+      \field{sortinit}{3}
+      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
       \field{labeltitlesource}{title}
       \field{title}{PyCharm Quick Start Guide}
       \verb{urlraw}
@@ -85,8 +85,8 @@
       \strng{authorbibnamehash}{4335b34d0130785c4162859323164106}
       \strng{authornamehash}{4335b34d0130785c4162859323164106}
       \strng{authorfullhash}{4335b34d0130785c4162859323164106}
-      \field{sortinit}{3}
-      \field{sortinithash}{a4b52e5432884761f50fb9571273b93e}
+      \field{sortinit}{4}
+      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Python Példaprogramok}
@@ -111,8 +111,8 @@
       \strng{authorbibnamehash}{4335b34d0130785c4162859323164106}
       \strng{authornamehash}{4335b34d0130785c4162859323164106}
       \strng{authorfullhash}{4335b34d0130785c4162859323164106}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Python under the hood — tips and tricks from a C++-programmers’ perspective (Part I)}
@@ -137,8 +137,8 @@
       \strng{authorbibnamehash}{4335b34d0130785c4162859323164106}
       \strng{authornamehash}{4335b34d0130785c4162859323164106}
       \strng{authorfullhash}{4335b34d0130785c4162859323164106}
-      \field{sortinit}{4}
-      \field{sortinithash}{11cdaee3b18e01d77f3f428b13c1fc76}
+      \field{sortinit}{5}
+      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Python under the hood — tips and tricks from a C++-programmers’ perspective (Part II)}
@@ -150,8 +150,8 @@
       \endverb
     \endentry
     \entry{conda}{misc}{}
-      \field{sortinit}{5}
-      \field{sortinithash}{3c19c3776b658b3558e9e2e4840c01e2}
+      \field{sortinit}{6}
+      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
       \field{labeltitlesource}{title}
       \field{title}{Anaconda}
       \verb{urlraw}
@@ -162,8 +162,8 @@
       \endverb
     \endentry
     \entry{opencv}{misc}{}
-      \field{sortinit}{6}
-      \field{sortinithash}{57e57fb8451e7fcfa45d1e069f6d3136}
+      \field{sortinit}{7}
+      \field{sortinithash}{c818dd9105a2852444fc9f5e145c294e}
       \field{labeltitlesource}{title}
       \field{title}{OpenCV Documentation}
       \verb{urlraw}

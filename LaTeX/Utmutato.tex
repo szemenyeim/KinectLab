@@ -75,7 +75,7 @@
 \newcommand{\vikauthor}{Szemenyei Márton, Reizinger Patrik}
 \newcommand{\viktitle}{M7 – Objektumkövetés mélység kamera segítségével}
 \newcommand{\vikdept}{Irányítástechnika és Informatika Tanszék}
-\newcommand{\vikdoktipus}{Irányítástechnika és Képfeldolgozás Laboratórium}
+\newcommand{\vikdoktipus}{Irányítástechnika és Képfeldolgozás Laboratórium 1.}
 \newcommand{\viksubtitle}{Mérési Útmutató}
 
 %--------------------------------------------------------------------------------------
@@ -203,6 +203,7 @@ aboveskip=10pt}
 \singlespacing
 \tableofcontents\thispagestyle{fancy}
 \titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp}{0pt}{\Huge\bfseries}
+\onehalfspacing
 
 \chapter{Objektumfelismerés}
 
@@ -233,36 +234,7 @@ A számítógépes látás~\cite{szgl} során gyakran használjuk ki a szürkeá
 
 A kamerák által leggyakrabban használt színábrázolás (vagy más néven az RGB színtér) azonban erre nem alkalmas: két színt leíró pont geometriai távolsága az RGB színtérben nem kifejező arra nézve, hogy az emberi érzékelés mennyire érzi hasonlónak a két színt. Ezen felül amennyiben a megvilágítási viszonyok megváltoznak, az egy RGB kép esetén mind a három értéket megváltoztatja, pedig a képen található objektum színe nem változott.
 
-A színtér transzformációs eljárások célja, hogy az RGB helyett egy olyan új színreprezentációt adjanak meg, amely információ elveszítése nélkül képes a színbeli hasonlóságot jól leírni, ezen felül pedig a megvilágítás változására is robusztus. Ezek a transzformációk ezzel egyben egy új színteret is definiálnak.
-
-Az egyik leggyakrabban használt színtér az YCbCr család, melynek több minimálisan különböző változata van. A színtér három csatornája közül az Y egy elkülönített világosság komponens, amely az adott szín fényességét reprezentálja. A másik két csatorna a Cr és a Cb pedig a szín árnyalatát kódolja el. Ezt a színteret gyakorta alkalmazzák digitális videó rendszerekben, valamint a JPEG és az MPEG kódolás során. A gyakorlatban az YCbCr színteret gyakorta összekeverik az YUV színtérrel, amely hasonló elven működik, csak éppenséggel analóg rendszerekben használatos.
-
-A másik, képfeldolgozás esetén gyakran használt család a HSV/HSI/HSL család. Ezen színterek közös jellemzője, hogy a szín információt két érték, a Hue (színárnylat) és a Saturation (telítettség) segítségével írják le, míg a reprezentációk közötti alapvető különbség a fényesség/intenzitás reprezentációjának módja. Ez a színtér könnyen ábrázolható egy henger vagy kúp formájában. A szín alapú feldolgozás esetén rendkívül gyakori mindkét alternatív színtér használata.
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.45\textwidth]{images/YCBCR.png}
-	\includegraphics[width=0.45\textwidth]{images/HSV.png}
-	\label{fig:2}
-	\caption{A YCbCr (bal) és a HSV (jobb) színterek ábrázolása.}
-\end{figure}
-
-\section{Bináris képek feldolgozása}
-
-Az eddigi diszkusszió során említésre került, hogy a képeknek több fajtája létezik, melyek közül a leggyakoribb fajták az egy csatornás szürkeárnyalatos, illetve a három csatornás színes képek. Szintén gyakran előfordulnak azonban kétállapotú, bináris képek például éldetektálás esetén, ahol az élekhez tartozó pixelek egyes értéket vettek fel, míg a többi nullást. Ilyen bináris képek azonban számos más művelet eredményeképp is előállhatnak, például küszöbözés, színdetektálás, vagy komplex objektumdetektáló eljárások során.
-
-A jelenlegi alfejezetben olyan bináris képeket fogunk vizsgálni, melyeknek a két állapota közül az egyik „1” az adott alkalmazás szempontjából relevánsnak tekintett objektumainkat jelöli, míg a „0” az számunkra irreleváns hátteret reprezentálja. Fontos megjegyezni, hogy a megjelenítés során a láthatóság kedvéért a bináris képek kép állapotát a maximális fehér és a minimális fekete színek szokták jelölni, arra viszont nincs egyértelmű konvenció, hogy a két szín közül melyik jelöli az objektumot- és a hátteret. A jelen műben következetesen a fehér szín fogja az objektumot jelölni, de ez más forrásokban lehet fordítva is.
-
-A gyakorlatban bármilyen kifinomult módszert is használunk az objektumok elkülönítésére, ez nem fog tökéletesen sikerülni, így – ahogy a színes és szürkeárnyalatos képek esetében is – szükség van a bináris képek javítására. Természetesen, mivel a bináris képek hibái más jellegűek, ezért az azok javítására használt módszerek is jelentősen eltérnek. A bináris képeknek alapvetően két jellemző hibája fordul elő: az egyik az olyan pixelek jelenléte, amelyek a valóságban a háttérhez tartoznak, azonban mégis objektumként lettek címkézve, valamint ennek az ellentéte: a tévesen háttérként címkézett objektum pixelek. Az előbbi hibák miatt hamis objektumokat láthatunk a képen, vagy a valóságban elkülönülő objektumokat tévesen összenöveszthetünk. Az utóbbi miatt előfordulhat, hogy lukakat kapunk egyes objektumokon belül, vagy, hogy egy a valóságban egybefüggő objektumot tévesen szétválasztunk.
-
-Erre a problémára gyakran alkalmazott megoldás az erózió, illetve a dilatáció művelete, valamint az ezek egymás után történő elvégzéséből adódó nyitás és zárás. Ezek a műveletek azonban az egyes objektumok alakját a hozzájuk használt strukturáló elem alakjának függvényében torzítják, valamint, amennyiben a zajok és lyukak meglehetősen nagy méretűek, akkor az elvégzésük is költséges. Létezik azonban egy egyszerű alternatíva, amely abban az esetben használható, ha csupán egyetlen objektumot keresünk, és nagy valószínűséggel tudjuk garantálni, hogy a képen ez lesz a legnagyobb.
-
-Ha a bináris képen eróziót végzünk, majd az így kapott képet az eredetiből kivonjuk, akkor az egyes bináris objektumok határait, azaz kontúrjait tartalmazó képet kapunk. Amennyiben az így kapott kontúrok közül a legnagyobb területűt kiválasztjuk, akkor megkaphatjuk a keresett objektumot. Ennek az objektumnak egy rendkívül fontos leíró mennyisége a nyomaték, vagy idegen kifejezéssel a momentum. Nyomatékból számos rend létezik, melyek közül számunkra a nullad-, illetve az elsőrendű nyomatékok hasznosak. A nulladrendű nyomaték egész egyszerűen a pixel intenzitások összege, míg az elsőrendű nyomatékok esetén az intenzitásokat az adott pixel x, vagy y koordinátájával súlyozzuk. Mivel itt bináris képeket tárgyalunk, így az itteni objektumok nulladrendű nyomatéka azok területét fogja megadni. Az objektumok tömegközéppontját pedig meghatározhatjuk az első és a nulladrendű nyomatékok segítségével az alábbi képlet alapján:
-
-\begin{equation}
-	x=\frac{M_x^1}{M_0}, \; y=\frac{M_y^1}{M_0},  \; \; M_x^1=\sum x I(x,y), \;  M_y^1=\sum y I(x,y), \; \; M_0=\sum I(x,y) 
-\end{equation}
-
+A színtér transzformációs eljárások célja, hogy az RGB helyett egy olyan új színreprezentációt adjanak meg, amely információ elveszítése nélkül képes a színbeli hasonlóságot jól leírni, ezen felül pedig a megvilágítás változására is robusztus. Ezek a transzformációk ezzel egyben egy új színteret is definiálnak. A két leggyakrabban használt színtér az YCbCr család, illetve a HS\{V/I/L\} család. Ezekről a színterekről a Számítógépes Látórendszerek c. tárgy jegyzetében~\cite{szgl} olvashat bővebben.
 
 \chapter{A mérés környezete}
 
