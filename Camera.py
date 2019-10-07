@@ -33,7 +33,7 @@ class Camera(object):
 
     else:
         def __init__(self):
-            openni2.initialize("/home/labor/Downloads/OpenNI_2.3.0.55/Linux/OpenNI-Linux-x64-2.3.0.55/Redist")
+            openni2.initialize("/home/nvidia/Downloads/OpenNI/OpenNI-Linux-Arm64-2.3/Redist")
             self.dev = openni2.Device.open_any()
             self.depth_stream = self.dev.create_depth_stream()
             self.color_stream = self.dev.create_color_stream()
