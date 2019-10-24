@@ -323,7 +323,7 @@ Az OpenCV~\cite{opencv} egy nyílt forráskódú számítógépes látás algori
 
 \subsection{Adattípusok}
 
-Az OpenCV könyvtár a Python verzióban a Numpy könyvtár által definiált n dimenziós számtömböket (ndarray) használja a képek tárolására. Ezek a tömbök különböző adattípusokat tartalmazhatnak, méretük minden kép esetén $c\times H\times W$, ahol $c$ a csatornák, $H$ a képsorok, $W$ pedig az oszlopok száma. Az egyszerűbb képi adattípusok egy azonosítóval is definiálhatóak az alábbi formában:
+Az OpenCV könyvtár a Python verzióban a Numpy könyvtár által definiált n dimenziós számtömböket (ndarray) használja a képek tárolására. Ezek a tömbök különböző adattípusokat tartalmazhatnak, méretük minden kép esetén $H\times W\times c$, ahol $c$ a csatornák, $H$ a képsorok, $W$ pedig az oszlopok száma. Az egyszerűbb képi adattípusok egy azonosítóval is definiálhatóak az alábbi formában:
 
 \begin{center} 
 	CV\_<bitmélység>{U|S|F}C<csatornák száma>
@@ -456,7 +456,7 @@ mask = np.zeros_like(binary)
 Kontúrok keresése
 
 \begin{lstlisting}[language=Python]
-contours, _ = cv2.findContours(binary, cv2.RETR\_EXTERNAL, cv2.CHAIN\_APPROX\_SIMPLE)
+contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 \end{lstlisting}
 
 Maximum keresése
@@ -492,13 +492,13 @@ self.cog = (int(moments['m10']/moments['m00']) + self.BB[2], int(moments['m01']/
 HSV konverzió
 
 \begin{lstlisting}[language=Python]
-imgHsv= cv2.cvtColor(imgRoi, cv2.COLOR\_BGR2HSV)
+imgHsv= cv2.cvtColor(imgRoi, cv2.COLOR_BGR2HSV)
 \end{lstlisting}
 
 Kép maszkolása
 
 \begin{lstlisting}[language=Python]
-maskedImgHsv = cv2.bitwise\_and(image, image, mask=mask)
+maskedImgHsv = cv2.bitwise_and(image, image, mask=mask)
 \end{lstlisting}
 
 Csatornánkénti szétválasztás
@@ -510,7 +510,7 @@ hueImg = maskedImgHsv[:, :, 0]
 Bináris maszkok kombinálása
 
 \begin{lstlisting}[language=Python]
-hueMask = np.logical\_and(cond1, cond2)
+hueMask = np.logical_and(cond1, cond2)
 \end{lstlisting}
 
 Bináris maszk alkalmazása
