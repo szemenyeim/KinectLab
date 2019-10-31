@@ -29,7 +29,7 @@ if __name__ == '__main__':
         times += end-start
         cntr += 1
 
-        depth = (cv2.cvtColor(depth,cv2.COLOR_GRAY2BGR)//64).astype('uint8')
+        depth = (cv2.cvtColor(depth,cv2.COLOR_GRAY2BGR)//16).astype('uint8')
         dispImage = np.append(img,depth,axis = 1)
         dispImage = np.append(dispImage,(np.ones([250,1280,3])*255).astype('uint8'), axis=0)
 
