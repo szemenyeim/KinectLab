@@ -68,7 +68,17 @@ class FolderCam(object):
         self.depthPath = osp.join(path,"depth")
 
         self.images = sorted(glob1(self.rgbPath,"*.jpg"), key=alphanum_key)
+        if len(self.images) is 0:
+            self.images = sorted(glob1(self.rgbPath, "*.png"), key=alphanum_key)
+        if len(self.images) is 0:
+            raise ValueError(f"No RGB image can be found at the specified directory={path}")
+
         self.depths = sorted(glob1(self.depthPath,"*.png"), key=alphanum_key)
+
+        if len(self.depths) is 0:
+            raise ValueError(f"No depth image can be found at the specified directory={path}")
+
+
 
         self.cntr = 0
 

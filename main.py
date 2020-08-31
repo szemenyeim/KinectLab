@@ -3,11 +3,19 @@ from Camera import FolderCam ,Camera
 from ImageProcessor import ImageProcessor
 import numpy as np
 import time
+from KalmanFilter import KalmanFilter
+from os.path import abspath, dirname, join
 
 if __name__ == '__main__':
 
-    cam = Camera()
-    #cam = FolderCam("./vid")
+    kf = KalmanFilter()
+
+    main_dir = dirname(abspath(__file__))
+    vid_path = join(main_dir, "vid")
+
+
+    # cam = Camera()
+    cam = FolderCam(vid_path)
 
     imageProcessor = ImageProcessor()
 
@@ -24,6 +32,9 @@ if __name__ == '__main__':
         start = time.time()
         img,depth = imageProcessor.processImage(img,depth)
         x,y,z = imageProcessor.compute3D()
+
+        state, cov = kf.filter([x, y, z])
+
         end = time.time()
 
         times += end-start
