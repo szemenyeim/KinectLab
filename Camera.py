@@ -1,13 +1,13 @@
 import numpy as np
 import cv2
-from primesense import openni2
-from primesense import _openni2 as c_api
+#from primesense import openni2
+#from primesense import _openni2 as c_api
 import os.path as osp
 from glob import glob1
 import re
-import platform
+#import platform
 
-rel = platform.linux_distribution() #returns release version
+#rel = platform.linux_distribution() #returns release version
 
 def tryint(s):
     try:
@@ -21,7 +21,7 @@ def alphanum_key(s):
     """
     return [ tryint(c) for c in re.split('([0-9]+)', s) ]
 
-class Camera(object):
+'''class Camera(object):
 
     if rel[1] == '18.04':
         def getImages(self):
@@ -60,7 +60,7 @@ class Camera(object):
             img.shape = (480, 640, 3)
             img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
 
-            return img, depth
+            return img, depth'''
 
 class FolderCam(object):
     def __init__(self, path):
@@ -68,14 +68,14 @@ class FolderCam(object):
         self.depthPath = osp.join(path,"depth")
 
         self.images = sorted(glob1(self.rgbPath,"*.jpg"), key=alphanum_key)
-        if len(self.images) is 0:
+        if len(self.images) == 0:
             self.images = sorted(glob1(self.rgbPath, "*.png"), key=alphanum_key)
-        if len(self.images) is 0:
+        if len(self.images) == 0:
             raise ValueError(f"No RGB image can be found at the specified directory={path}")
 
         self.depths = sorted(glob1(self.depthPath,"*.png"), key=alphanum_key)
 
-        if len(self.depths) is 0:
+        if len(self.depths) == 0:
             raise ValueError(f"No depth image can be found at the specified directory={path}")
 
 
@@ -90,7 +90,7 @@ class FolderCam(object):
         imgName = osp.join(self.rgbPath,self.images[self.cntr])
         depthName = osp.join(self.depthPath,self.depths[self.cntr])
 
-        img = cv2.imread(imgName)
+        img = cv2.imread(imgName, cv2.IMREAD_UNCHANGED)
         depth = cv2.imread(depthName, cv2.IMREAD_UNCHANGED)
 
         self.cntr += 1

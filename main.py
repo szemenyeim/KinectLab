@@ -12,8 +12,8 @@ if __name__ == '__main__':
 
     kf = KalmanFilter()
 
-    main_dir = dirname(abspath(__file__))
-    vid_path = join(main_dir, "vid")
+    main_dir = "videos"
+    vid_path = join(main_dir, "vid1")
 
     # cam = Camera()
     cam = FolderCam(vid_path)

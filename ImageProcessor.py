@@ -8,8 +8,8 @@ class ImageProcessor(object):
 
         self.BBGUI = BBGUI()
 
-        self.focal = 1062.3
-        self.imgW = 640
+        self.focal = 606.5
+        self.imgW = 848
         self.imgH = 480
 
         self.initDepth = None
