@@ -13,19 +13,19 @@ class KalmanFilter(object):
     def __init__(self) -> None:
         super().__init__()
 
-        #TODO: define state transition matrix for 3D positions and velocities
+        # todo: define state transition matrix for 3D positions and velocities
         A = []
 
-        #TODO: define observation matrix for 3D position measurements
+        # todo: define observation matrix for 3D position measurements
         C = []
 
 
-        #TODO: set covariance matrices (use small values)
+        # todo: set covariance matrices (use small values)
         self.P = None
         Q = None  # process noise covariance
         R = None  # measurement noise covariance
 
-        # initialize the state vector
+        # todo: initialize the state vector
         x0, y0, z0 = 0.0, 0.0, 0.0
         vx0, vy0, vz0 = 0.0, 0.0, 0.0
         self.x = [x0, y0, z0, vx0, vy0, vz0]
@@ -39,10 +39,10 @@ class KalmanFilter(object):
                                         observation_covariance=None)
 
     def filter(self, measurement: List):
-        # call the filter and save the state and covariance
+        # todo: call the filter and save the state and covariance
         # TODO: Don't forget to delete the condition
         if False:
             _, _ = self.kf.filter_update(None, None, None)
 
-        # return both x and P
+        # todo: return both x and P
         return self.x, self.P

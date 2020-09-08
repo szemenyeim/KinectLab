@@ -45,14 +45,14 @@ class ImageProcessor(object):
         return (cog[1] - hHeigth, cog[1] + hHeigth, cog[0] - hWidth, cog[0] + hWidth)
 
     def getRoi(self,array, ROI):
-        # Cut ROI from array
+        # todo: Cut ROI from array
         return None
 
     def getDepthMask(self,depthRoi):
-        # get the depth value in the middle of the depth ROI (CONVERT IT TO INT!!!)
+        # todo: get the depth value in the middle of the depth ROI (CONVERT IT TO INT!!!)
 
 
-        # If the jump from the previous value is too large, use the previous value
+        # todo: If the jump from the previous value is too large, use the previous value
 
 
         # If there is nothing in the initDepth variable, fill it with the current depthVal
@@ -60,7 +60,7 @@ class ImageProcessor(object):
             self.initDepth = self.depthVal
 
 
-        # Mask the depth image using the current depthVal
+        # todo: Mask the depth image using the current depthVal
 
         return np.ones(depthRoi.shape, 'uint8')
 
@@ -70,38 +70,38 @@ class ImageProcessor(object):
         mask = np.zeros_like(binary)
         moments = None
 
-        # Find contours
+        # todo: Find contours
 
-        # get largest contour
+        # todo: get largest contour
 
-        # In case of no contours return default ones
+        # todo: In case of no contours return default ones
 
-        # If getMoments is true, compute moments
+        # todo: If getMoments is true, compute moments
 
         # Draw largest contour on image and return
         return mask, moments
 
     def getMaxHue(self, image, mask):
-        # Mask hsv image TIP: use cv2.bitwise_and
+        # todo: Mask hsv image TIP: use cv2.bitwise_and
 
-        # Get hue, saturation and value images
+        # todo: Get hue, saturation and value images
 
-        # Mask out hue pixels with 0 value and saturation smaller thatn 20
+        # todo: Mask out hue pixels with 0 value and saturation smaller thatn 20
 
-        # compute histogram
+        # todo: compute histogram
 
-        # return argmax of histogram
+        # todo: return argmax of histogram
         return 0
 
     def getHueMask(self,imgRoi,depthMask):
 
-        # Convert image to HSV
+        # todo: Convert image to HSV
 
 
-        # If there is nothing in hueVal, get the largest hue
+        # todo: If there is nothing in hueVal, get the largest hue
 
 
-        # Mask the hsv image using the hueVal. Also use saturation and value
+        # todo: Mask the hsv image using the hueVal. Also use saturation and value
 
         return np.ones(depthMask.shape, 'uint8')
 
@@ -117,35 +117,35 @@ class ImageProcessor(object):
             self.initH = self.height
             self.initW = self.width
 
-        # get ROIs
+        # todo: get ROIs
 
 
-        # Get depth mask
+        # todo: Get depth mask
 
 
-        # Get hue mask
+        # todo: Get hue mask
 
 
-        # combine the two masks
+        # todo: combine the two masks
 
 
-        # Find largest contour in final mask
+        # todo: Find largest contour in final mask
 
 
-        # If the moments were not found, return images
+        # todo: If the moments were not found, return images
 
 
-        # Compute new center of mass (DON'T FORGET TO COMPENSATE FOR THE ROI!!!)
+        # todo: Compute new center of mass (DON'T FORGET TO COMPENSATE FOR THE ROI!!!)
         # cog has (x,y) coordinates
 
 
-        # Compute ratio between the original and current depths
+        # todo: Compute ratio between the original and current depths
 
 
-        # Compute new size of the bounding rect using the ratio
+        # todo: Compute new size of the bounding rect using the ratio
 
 
-        # Compute new bounding box
+        # todo: Compute new bounding box
 
 
         # Draw the center of mass and bounding box on the image
@@ -158,7 +158,7 @@ class ImageProcessor(object):
         return image, depth
 
     def compute3D(self):
-        # Compute 3D coordinates
+        # todo: Compute 3D coordinates
         # HELP: u = f/z*x + px; v = f/z*y + py
         z = -1
         x = -1
