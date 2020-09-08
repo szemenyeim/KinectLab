@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
-from primesense import openni2
-from primesense import _openni2 as c_api
+#from primesense import openni2
+#from primesense import _openni2 as c_api
 import os.path as osp
 from glob import glob1
 import re

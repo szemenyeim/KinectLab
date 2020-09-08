@@ -26,9 +26,8 @@ class KalmanFilter(object):
         R = None  # measurement noise covariance
 
         # initialize the state vector
-        #TODO: None-s should be replaced
-        x0, y0, z0 = None, None, None
-        vx0, vy0, vz0 = None, None, None
+        x0, y0, z0 = 0.0, 0.0, 0.0
+        vx0, vy0, vz0 = 0.0, 0.0, 0.0
         self.x = [x0, y0, z0, vx0, vy0, vz0]
 
         #TODO: create the KF
@@ -41,7 +40,9 @@ class KalmanFilter(object):
 
     def filter(self, measurement: List):
         # call the filter and save the state and covariance
-        _, _ = self.kf.filter_update(None, None, None)
+        # TODO: Don't forget to delete the condition
+        if False:
+            _, _ = self.kf.filter_update(None, None, None)
 
         # return both x and P
-        return None, None
+        return self.x, self.P
