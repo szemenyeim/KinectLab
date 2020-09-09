@@ -9,8 +9,8 @@ class ImageProcessor(object):
         self.BBGUI = BBGUI()
 
         self.focal = 606.5
-        self.imgW = 848
-        self.imgH = 480
+        self.imgW = 640
+        self.imgH = 360
 
         self.initDepth = None
         self.initW = None
@@ -119,7 +119,7 @@ class ImageProcessor(object):
             self.hueVal = self.getMaxHue(imgHsv,depthMask)
 
         # Mask the hsv image using the hueVal. Also use saturation and value
-        return cv2.inRange(imgHsv,lowerb=np.array([self.hueVal-25, 10, 1]),upperb=np.array([self.hueVal+25, 255, 255]))
+        return cv2.inRange(imgHsv,lowerb=np.array([self.hueVal-25, 10, 10]),upperb=np.array([self.hueVal+25, 255, 255]))
 
     def processImage(self, image, depth):
         if self.BB is None:
