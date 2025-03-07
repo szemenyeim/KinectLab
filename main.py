@@ -4,7 +4,7 @@ from os.path import abspath, dirname, join
 import cv2
 import numpy as np
 
-from Camera import FolderCam
+from Camera import Camera
 from ImageProcessor import ImageProcessor
 from KalmanFilter import KalmanFilter
 
@@ -15,8 +15,8 @@ if __name__ == '__main__':
     main_dir = "videos"
     vid_path = join(main_dir, "vid1")
 
-    # cam = Camera()
-    cam = FolderCam(vid_path)
+    cam = Camera()
+    #cam = FolderCam(vid_path)
 
     imageProcessor = ImageProcessor()
 
@@ -48,11 +48,11 @@ if __name__ == '__main__':
         dispImage = np.append(img, depth, axis=1)
         dispImage = np.append(dispImage, (np.ones([250, dispImage.shape[1], 3]) * 255).astype('uint8'), axis=0)
 
-        cv2.putText(dispImage, (f"X position = {x:.4f}/KF = {state[0]:.4f}"), (20, 480), cv2.FONT_HERSHEY_COMPLEX, 1,
+        cv2.putText(dispImage, (f"X position = {x:.4f}/KF = {state[0]:.4f}"), (20, 530), cv2.FONT_HERSHEY_COMPLEX, 1,
                     (0, 0, 255))
-        cv2.putText(dispImage, (f"Y position = {y:.4f}/KF = {state[1]:.4f}"), (20, 530), cv2.FONT_HERSHEY_COMPLEX, 1,
+        cv2.putText(dispImage, (f"Y position = {y:.4f}/KF = {state[1]:.4f}"), (20, 580), cv2.FONT_HERSHEY_COMPLEX, 1,
                     (0, 0, 255))
-        cv2.putText(dispImage, (f"Z position = {z:.4f}/KF = {state[2]:.4f}"), (20, 580), cv2.FONT_HERSHEY_COMPLEX, 1,
+        cv2.putText(dispImage, (f"Z position = {z:.4f}/KF = {state[2]:.4f}"), (20, 630), cv2.FONT_HERSHEY_COMPLEX, 1,
                     (0, 0, 255))
 
         cv2.imshow("Tracking", dispImage)

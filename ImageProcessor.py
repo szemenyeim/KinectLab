@@ -10,7 +10,7 @@ class ImageProcessor(object):
 
         self.focal = 1062.3
         self.imgW = 640
-        self.imgH = 360
+        self.imgH = 480
 
         self.initDepth = None
         self.initW = None
